@@ -46,6 +46,7 @@ class GrupoTest {
     void estaFormadoCuandoTieneDosMiembros() {
 
         Grupo grupo = new Grupo();
+        grupo.setNombre("Grupo con dos miembros");
         grupo.setMiembros(Arrays.asList("mtolosa", "sdiaz"));
 
         boolean estaFormado = grupo.estaFormado();
@@ -62,4 +63,25 @@ class GrupoTest {
 
         assertThat(grupo.estaFormado()).isFalse();
     }
+
+    @Test
+    void estaFormadoCuandoNombreTieneMasDeUnCaracter(){
+
+        Grupo grupo = new Grupo();
+
+        grupo.setNombre("AA");
+
+        assertThat(grupo.estaFormado()).isFalse();
+    }
+
+    @Test
+    void noEstaFormadoCuandoNombreTieneSoloUnCaracter(){
+
+        Grupo grupo = new Grupo();
+
+        grupo.setNombre("A");
+
+        assertThat(grupo.estaFormado()).isFalse();
+    }
+
 }

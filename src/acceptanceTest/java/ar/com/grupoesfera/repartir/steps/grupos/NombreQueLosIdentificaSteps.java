@@ -84,4 +84,45 @@ public class NombreQueLosIdentificaSteps extends CucumberSteps {
                 .contains("No se puede guardar");
     }
 
+    @Cuando("el usuario intenta crear un grupo con nombre de solo un caracter")
+    public void elUsuarioIntentaCrearUnGrupoConNombreDeSoloUnCaracter() {
+
+        nombreIndicado = "a";
+
+        var wait = new WebDriverWait(driver, 2);
+        var crearGruposButton = wait.until(elementToBeClickable(By.id("crearGruposButton")));
+        crearGruposButton.click();
+
+        driver.findElement(By.id("nombreGrupoNuevoInput")).sendKeys(nombreIndicado);
+
+        var miembrosInput = driver.findElement(By.id("miembrosGrupoNuevoInput"));
+        miembrosInput.sendKeys("Victor");
+        miembrosInput.sendKeys(Keys.ENTER);
+        miembrosInput.sendKeys("Brenda");
+        miembrosInput.sendKeys(Keys.ENTER);
+
+        driver.findElement(By.id("guardarGrupoNuevoButton")).click();
+
+        wait.until(visibilityOfElementLocated(By.id("mensajesToast")));
+    }
+
+    @Entonces("no debería crear el grupo con nombre de solo un caracter")
+    public void noDeberiaCrearElGrupoConNombreDeSoloUnCaracter() {
+
+        // TODO
+    }
+
+    @Y("debería ser informado que necesita tener al menos dos caracteres")
+    public void deberiaSerInformadoQueNecesitaTenerAlMenosDosCaracteres() {
+
+        var wait = new WebDriverWait(driver, 2);
+        var mensajesToast = wait.withMessage("Mostro Toast")
+                .until(visibilityOfElementLocated(By.id("mensajesToast")));
+        wait.withMessage("Título del Toast es 'Error'")
+                .until(textToBePresentInElement(mensajesToast, "Error"));
+        assertThat(mensajesToast.getText())
+                .as("Descripción del Toast")
+                .contains("No se puede guardar");
+    }
+
 }
