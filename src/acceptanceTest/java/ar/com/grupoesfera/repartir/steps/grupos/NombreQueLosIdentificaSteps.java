@@ -65,41 +65,14 @@ public class NombreQueLosIdentificaSteps extends CucumberSteps {
         driver.findElement(By.id("guardarGrupoNuevoButton")).click();
     }
 
-    @Entonces("no debería crear el grupo sin nombre")
-    public void noDeberiaCrearElGrupoSinNombre() {
+    @Entonces("^no debería crear el grupo? (.*)$")
+    public void noDeberiaCrearElGrupo(String razon) {
 
         // TODO
     }
 
-    @Y("debería ser informado que no puede crear un grupo sin nombre")
-    public void deberiaSerInformadoQueNoPuedeCrearUnGrupoSinNombre() {
-
-        var wait = new WebDriverWait(driver, 2);
-        var mensajesToast = wait.withMessage("Mostro Toast")
-                .until(visibilityOfElementLocated(By.id("mensajesToast")));
-        wait.withMessage("Título del Toast es 'Error'")
-                .until(textToBePresentInElement(mensajesToast, "Error"));
-        assertThat(mensajesToast.getText())
-                .as("Descripción del Toast")
-                .contains("No se puede guardar");
-    }
-
-
-    @Entonces("no debería crear el grupo con nombre de solo un caracter")
-    public void noDeberiaCrearElGrupoConNombreDeSoloUnCaracter() {
-
-        var wait = new WebDriverWait(driver, 2);
-        var mensajesToast = wait.withMessage("Mostro Toast")
-                .until(visibilityOfElementLocated(By.id("mensajesToast")));
-        wait.withMessage("Título del Toast es 'Error'")
-                .until(textToBePresentInElement(mensajesToast, "Error"));
-        assertThat(mensajesToast.getText())
-                .as("Descripción del Toast")
-                .contains("No se puede guardar");
-    }
-
-    @Y("debería ser informado que necesita tener al menos dos caracteres")
-    public void deberiaSerInformadoQueNecesitaTenerAlMenosDosCaracteres() {
+    @Y("^debería ser informado que no puede crear un grupo? (.*)$")
+    public void deberiaSerInformadoQueNoPuedeCrearUnGrupo(String razon) {
 
         var wait = new WebDriverWait(driver, 2);
         var mensajesToast = wait.withMessage("Mostro Toast")
