@@ -27,7 +27,7 @@ Característica: Crear Grupo para repartir gastos
       Dado que el usuario inició Repartir
       Cuando el usuario intenta crear un grupo indicando un único miembro
       Entonces no debería crear el grupo con un único miembro
-      Y debería ser informado que necesita tener al menos dos miembros
+      Y debería ser informado que no puede crear un grupo con un solo miembro
 
   Regla: Los grupos tienen un estado inicial
 
@@ -40,11 +40,11 @@ Característica: Crear Grupo para repartir gastos
 
     Escenario: Crea un grupo con nombre de más de un caracter
       Dado que el usuario inició Repartir
-      Cuando el usuario crea un grupo indicando el nombre "Be"
+      Cuando el usuario crea un grupo indicando el nombre 'Be'
       Entonces debería visualizar dentro del listado el grupo con el nombre indicado
 
     Escenario: Crea un grupo con nombre de un caracter
       Dado que el usuario inició Repartir
       Cuando el usuario crea un grupo indicando el nombre 'A'
       Entonces no debería crear el grupo con nombre de solo un caracter
-      Y debería ser informado que necesita tener al menos dos caracteres
+      Y debería ser informado que no puede crear un grupo con nombre de solo un caracter

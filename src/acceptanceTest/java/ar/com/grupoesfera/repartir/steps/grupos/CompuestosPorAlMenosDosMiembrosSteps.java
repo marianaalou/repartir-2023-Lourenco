@@ -64,12 +64,6 @@ public class CompuestosPorAlMenosDosMiembrosSteps extends CucumberSteps {
         driver.findElement(By.id("guardarGrupoNuevoButton")).click();
     }
 
-    @Entonces("no debería crear el grupo con un único miembro")
-    public void noDeberiaCrearElGrupoConUnUnicoMiembro() {
-
-        // TODO
-    }
-
     @Y("debería ser informado que necesita tener al menos dos miembros")
     public void deberiaSerInformadoQueNecesitaTenerAlMenosDosMiembros() {
 

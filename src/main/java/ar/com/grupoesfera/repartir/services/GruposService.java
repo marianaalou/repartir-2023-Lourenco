@@ -36,6 +36,11 @@ public class GruposService {
             throw new GrupoInvalidoException();
 
         }
+
+        if (grupo.getNombre().length() <= 1) {
+            throw new GrupoInvalidoException();
+
+        }
         montos.inicializarTotal(grupo);
         repository.save(grupo);
 
